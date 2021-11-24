@@ -27,6 +27,13 @@ public class AdactinBookConfirm {
 
 	@FindBy(how = How.ID, using = "my_itinerary")
 	private WebElement btnMyItinery;
+	
+	@FindBy(how = How.XPATH, using = "//*[@id='booking_form']/table/tbody/tr[1]/td")
+	private WebElement titleBookingConfirm;
+
+	public WebElement getTitleBookingConfirm() {
+		return titleBookingConfirm;
+	}
 
 	/**
 	 * @return Order Number of the booking
