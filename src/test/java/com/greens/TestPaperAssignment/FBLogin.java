@@ -1,7 +1,5 @@
 package com.greens.TestPaperAssignment;
 
-import java.util.Scanner;
-
 import org.junit.runner.RunWith;
 
 import cucumber.api.CucumberOptions;
