@@ -1,0 +1,239 @@
+[
+  {
+    "line": 2,
+    "elements": [
+      {
+        "line": 25,
+        "name": "As a user, I want to book the room and Store its order number in Excel",
+        "description": "",
+        "id": "room-booking;as-a-user--i-want-to-book-the-room-and-store-its-order-number-in-excel;;2",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 14231912700,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "User Launch the browser",
+            "match": {
+              "location": "AddctinStepDef.user_Launch_the_browser()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 278206800,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "User Login with Valid Details \"sowndharya97sathy\" and \"Sownd@123\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "sowndharya97sathy",
+                  "offset": 31
+                },
+                {
+                  "val": "Sownd@123",
+                  "offset": 55
+                }
+              ],
+              "location": "AddctinStepDef.user_Login_with_Valid_Details(String,String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3768226100,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "User Clicks the Login Button",
+            "match": {
+              "location": "AddctinStepDef.user_Clicks_the_Login_Button()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 21432000,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "Validate the HomePage",
+            "match": {
+              "location": "AddctinStepDef.validate_the_HomePage()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 322225700,
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "User Enters the details for Room",
+            "match": {
+              "location": "AddctinStepDef.user_Enters_the_details_for_Room()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1428043400,
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "User clicks Search button",
+            "match": {
+              "location": "AddctinStepDef.user_clicks_Search_button()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 13053900,
+              "status": "passed"
+            },
+            "line": 12,
+            "name": "Validate the Search Hotel Page",
+            "match": {
+              "location": "AddctinStepDef.validate_the_Search_Hotel_Page()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 65649700,
+              "status": "passed"
+            },
+            "line": 13,
+            "name": "User Selects the hotel",
+            "match": {
+              "location": "AddctinStepDef.user_Selects_the_hotel()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1488044700,
+              "status": "passed"
+            },
+            "line": 14,
+            "name": "User clicks Continue Button",
+            "match": {
+              "location": "AddctinStepDef.user_clicks_Continue_Button()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 27488600,
+              "status": "passed"
+            },
+            "line": 15,
+            "name": "Validate Book Hotel Page",
+            "match": {
+              "location": "AddctinStepDef.validate_Book_Hotel_Page()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 738407200,
+              "status": "passed"
+            },
+            "line": 16,
+            "name": "User enter the userDetails and Payment Details",
+            "match": {
+              "location": "AddctinStepDef.user_enter_the_userDetails_and_Payment_Details()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 62903400,
+              "status": "passed"
+            },
+            "line": 17,
+            "name": "User clicks Book Now button",
+            "match": {
+              "location": "AddctinStepDef.user_clicks_Book_Now_button()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 5631918200,
+              "status": "passed"
+            },
+            "line": 18,
+            "name": "Validate Booking Confirmation",
+            "match": {
+              "location": "AddctinStepDef.validate_Booking_Confirmation()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 27039700,
+              "status": "passed"
+            },
+            "line": 19,
+            "name": "Fetch Order Number and store in Excel",
+            "match": {
+              "location": "AddctinStepDef.fetch_Order_Number_and_store_in_Excel()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1157478500,
+              "status": "passed"
+            },
+            "line": 20,
+            "name": "User Clicks MyItenary",
+            "match": {
+              "location": "AddctinStepDef.user_Clicks_MyItenary()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 35965200,
+              "status": "passed"
+            },
+            "line": 21,
+            "name": "Validate the Booking confirmation Detials",
+            "match": {
+              "location": "AddctinStepDef.validate_the_Booking_confirmation_Detials()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@tag"
+          }
+        ]
+      }
+    ],
+    "name": "Room Booking",
+    "description": "  I Want to use the room booking template for my feauture file",
+    "id": "room-booking",
+    "keyword": "Feature",
+    "uri": "file:/F:/JAVA%20course/workspace/CucumberSample/src/test/resources/FeatureFile/addactin.feature",
+    "tags": [
+      {
+        "name": "@tag",
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 1
+        }
+      }
+    ]
+  }
+]

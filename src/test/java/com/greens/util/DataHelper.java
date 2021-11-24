@@ -11,7 +11,6 @@ import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.apache.xmlbeans.impl.store.Cur;
 
 public class DataHelper {
 	public static HashMap<String, String> storeValues = new HashMap<String, String>();
@@ -63,26 +62,18 @@ public class DataHelper {
 
 			// catch header row, so that you can use it as Key for your hashmap
 			Row HeaderRow = sheet.getRow(0);
-			HashMap<String, String> currentRowMap = new HashMap<String, String>();
-			
-			for (int c = 0; c < HeaderRow.getPhysicalNumberOfCells(); c++) {
+			Row ValueRow = sheet.getRow(1);
+			for (int c = 0; c < ValueRow.getPhysicalNumberOfCells(); c++) {
 				Cell CurrentCell = HeaderRow.getCell(c);
 				String df = new DataFormatter().formatCellValue(CurrentCell);
 				if (df.equals("Order number")) {
-					System.out.println(HeaderRow.getCell(c).getStringCellValue());
-					System.out.println(CurrentCell.getStringCellValue());
-					
 					CurrentCell.setCellValue(value);
-					
-					System.out.println(HeaderRow.getCell(c).getStringCellValue());
-					System.out.println(CurrentCell.getStringCellValue());
-					currentRowMap.put(HeaderRow.getCell(c).getStringCellValue(), CurrentCell.getStringCellValue());
 					// i.e hashmap<key, value> = <row(0)column(c), row(1)column(c)>
 				} else {
 				}
 			}
 			fs.close();
-			FileOutputStream outputStream = new FileOutputStream("TestData.xls");
+			FileOutputStream outputStream = new FileOutputStream("TestData.xlsx");
             wb.write(outputStream);
 			wb.close();
 			outputStream.close();
