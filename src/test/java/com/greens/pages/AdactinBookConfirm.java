@@ -1,5 +1,6 @@
 package com.greens.pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -25,6 +26,10 @@ public class AdactinBookConfirm {
 	@FindBy(how = How.ID, using = "order_no")
 	private WebElement txtOrderNumber;
 
+	public WebElement getTxtOrderNumber() {
+		return txtOrderNumber;
+	}
+
 	@FindBy(how = How.ID, using = "my_itinerary")
 	private WebElement btnMyItinery;
 	
@@ -39,7 +44,8 @@ public class AdactinBookConfirm {
 	 * @return Order Number of the booking
 	 */
 	public String getOrderNumber() {
-		String orderNo = txtOrderNumber.getText();
+		
+		String orderNo = txtOrderNumber.getAttribute("value");
 		return orderNo;
 	}
 

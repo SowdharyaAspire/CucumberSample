@@ -19,7 +19,7 @@ public class AdactinItenary {
 	private WebElement txtOrderNumber;
 
 	public String getOrderNumber() {
-		String ordNum = txtOrderNumber.getText();
+		String ordNum = txtOrderNumber.getAttribute("value");
 		return ordNum;
 	}
 }
