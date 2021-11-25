@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -20,9 +19,20 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+/**
+ * @author sowndharyalakshmi
+ * @date 23 Nov 2021 Class to help fetch and upate the Datas in the Excel file
+ */
 public class DataHelper {
-	public static HashMap<String, String> storeValues = new HashMap<String, String>();
 
+	/**
+	 * @param filePath
+	 *            location of file in this project
+	 * @param sheetName
+	 *            Sheet name of the file
+	 * @return Excel Datas are updated as Map of Map format and returned in this
+	 *         method.
+	 */
 	public static Map<String, Map<String, String>> readExcelDatafromFile(String filePath, String sheetName) {
 		// create Java List to store Hashmaps
 		Map<String, Map<String, String>> completeSheetData = new HashMap<String, Map<String, String>>();
@@ -65,27 +75,38 @@ public class DataHelper {
 
 	}
 
-	public static void updateCellValue(String filePath, String sheetName, String columnName, String value){
+	/**
+	 * @param filePath
+	 *            location of file in this project
+	 * @param sheetName
+	 *            Sheet name of the file
+	 * @param columnName
+	 *            Parameter which should be changed in the excel file
+	 * @param value
+	 *            the value to be updated in the given Excel file.
+	 */
+	@SuppressWarnings("resource")
+	public static void updateCellValue(String filePath, String sheetName, String columnName, String value) {
 		try {
 			File fileUpdate = new File(filePath);
-		Workbook workbookUpdate = new XSSFWorkbook(fileUpdate);
-		Sheet sheetUpdate = workbookUpdate.getSheet("data");
-		Row headRow = sheetUpdate.getRow(0);
-		int cellCount = headRow.getLastCellNum();
-		int updateCellIndex = 0;
-		for (int c = 1; c < cellCount; c++) {
-			String temp = headRow.getCell(c).getStringCellValue();
-			if (temp.equalsIgnoreCase(columnName)) {
-				updateCellIndex = c;
-				break;
-			} else {
-				continue;
+			Workbook workbookUpdate = new XSSFWorkbook(fileUpdate);
+			Sheet sheetUpdate = workbookUpdate.getSheet("data");
+			Row headRow = sheetUpdate.getRow(0);
+			int cellCount = headRow.getLastCellNum();
+			int updateCellIndex = 0;
+			for (int c = 1; c < cellCount; c++) {
+				String temp = headRow.getCell(c).getStringCellValue();
+				if (temp.equalsIgnoreCase(columnName)) {
+					updateCellIndex = c;
+					break;
+				} else {
+					continue;
+				}
 			}
-		}
-		Row valueRow = sheetUpdate.getRow(1);
-		valueRow.getCell(updateCellIndex).setCellValue(value);
-		FileOutputStream outputStream = new FileOutputStream("TestData.xlsx");
-		workbookUpdate.write(outputStream);
+			Row valueRow = sheetUpdate.getRow(1);
+			valueRow.getCell(updateCellIndex).setCellValue(value);
+			FileOutputStream outputStream = new FileOutputStream("TestData.xlsx");
+			workbookUpdate.write(outputStream);
 		} catch (InvalidFormatException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
