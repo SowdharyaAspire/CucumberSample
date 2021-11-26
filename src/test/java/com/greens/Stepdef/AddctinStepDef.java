@@ -58,6 +58,7 @@ public class AddctinStepDef {
 	public void user_Login_with_Valid_Details(String username, String password) {
 		adactinLogin = new AdactinLogin(driver);
 		adactinLogin.Login(username, password);
+		System.out.println(username);
 	}
 
 	@When("User Clicks the Login Button")
