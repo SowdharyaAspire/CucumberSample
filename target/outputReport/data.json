@@ -12,8 +12,9 @@
         "steps": [
           {
             "result": {
-              "duration": 15752840600,
-              "status": "passed"
+              "error_message": "org.openqa.selenium.WebDriverException: unknown error: cannot determine loading status\nfrom disconnected: unable to send message to renderer\n  (Session info: chrome\u003d96.0.4664.45)\nBuild info: version: \u00274.0.0\u0027, revision: \u00273a21814679\u0027\nSystem info: host: \u0027SOWNDHARYA\u0027, ip: \u0027172.20.10.4\u0027, os.name: \u0027Windows 10\u0027, os.arch: \u0027amd64\u0027, os.version: \u002710.0\u0027, java.version: \u00271.8.0_202\u0027\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCommand: [dbb28d2a8ca59e09883e8bcb9a4e6340, get {url\u003dhttp://adactinhotelapp.com/}]\nCapabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 96.0.4664.45, chrome: {chromedriverVersion: 96.0.4664.45 (76e4c1bb2ab46..., userDataDir: C:\\Users\\SOWNDH~1\\AppData\\L...}, goog:chromeOptions: {debuggerAddress: localhost:61337}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:61337/devtoo..., se:cdpVersion: 96.0.4664.45, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}\nSession ID: dbb28d2a8ca59e09883e8bcb9a4e6340\r\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)\r\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)\r\n\tat sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)\r\n\tat java.lang.reflect.Constructor.newInstance(Unknown Source)\r\n\tat org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)\r\n\tat org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)\r\n\tat org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)\r\n\tat org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)\r\n\tat org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:164)\r\n\tat org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:139)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:559)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.get(RemoteWebDriver.java:328)\r\n\tat com.greens.Stepdef.AddctinStepDef.user_Launch_the_browser(AddctinStepDef.java:52)\r\n\tat ✽.User Launch the browser(file:/F:/JAVA%20course/workspace/CucumberSample/src/test/resources/FeatureFile/addactin.feature:6)\r\n",
+              "duration": 14019811700,
+              "status": "failed"
             },
             "line": 6,
             "name": "User Launch the browser",
@@ -24,8 +25,8 @@
           },
           {
             "result": {
-              "duration": 236742400,
-              "status": "passed"
+              "duration": 17600,
+              "status": "skipped"
             },
             "line": 7,
             "name": "User Login with Valid Details \"sowndharya97sathy\" and \"Sownd@123\"",
@@ -46,8 +47,8 @@
           },
           {
             "result": {
-              "duration": 4055320000,
-              "status": "passed"
+              "duration": 10800,
+              "status": "skipped"
             },
             "line": 8,
             "name": "User Clicks the Login Button",
@@ -58,8 +59,8 @@
           },
           {
             "result": {
-              "duration": 24418000,
-              "status": "passed"
+              "duration": 14300,
+              "status": "skipped"
             },
             "line": 9,
             "name": "Validate the HomePage",
@@ -70,8 +71,8 @@
           },
           {
             "result": {
-              "duration": 332970700,
-              "status": "passed"
+              "duration": 9000,
+              "status": "skipped"
             },
             "line": 10,
             "name": "User Enters the details for Room",
@@ -82,8 +83,8 @@
           },
           {
             "result": {
-              "duration": 1167870900,
-              "status": "passed"
+              "duration": 7900,
+              "status": "skipped"
             },
             "line": 11,
             "name": "User clicks Search button",
@@ -94,9 +95,8 @@
           },
           {
             "result": {
-
-              "duration": 20374500,
-              "status": "passed"
+              "duration": 8300,
+              "status": "skipped"
             },
             "line": 12,
             "name": "Validate the Search Hotel Page",
@@ -107,9 +107,8 @@
           },
           {
             "result": {
-
-              "duration": 177571100,
-              "status": "passed"
+              "duration": 7200,
+              "status": "skipped"
             },
             "line": 13,
             "name": "User Selects the hotel",
@@ -120,8 +119,8 @@
           },
           {
             "result": {
-              "duration": 1614112900,
-              "status": "passed"
+              "duration": 7500,
+              "status": "skipped"
             },
             "line": 14,
             "name": "User clicks Continue Button",
@@ -132,8 +131,8 @@
           },
           {
             "result": {
-              "duration": 32390900,
-              "status": "passed"
+              "duration": 401900,
+              "status": "skipped"
             },
             "line": 15,
             "name": "Validate Book Hotel Page",
@@ -144,8 +143,8 @@
           },
           {
             "result": {
-              "duration": 894021600,
-              "status": "passed"
+              "duration": 8400,
+              "status": "skipped"
             },
             "line": 16,
             "name": "User enter the userDetails and Payment Details",
@@ -156,8 +155,8 @@
           },
           {
             "result": {
-              "duration": 65847700,
-              "status": "passed"
+              "duration": 6900,
+              "status": "skipped"
             },
             "line": 17,
             "name": "User clicks Book Now button",
@@ -168,8 +167,8 @@
           },
           {
             "result": {
-              "duration": 6010974600,
-              "status": "passed"
+              "duration": 11600,
+              "status": "skipped"
             },
             "line": 18,
             "name": "Validate Booking Confirmation",
@@ -180,8 +179,8 @@
           },
           {
             "result": {
-              "duration": 1359659500,
-              "status": "passed"
+              "duration": 6700,
+              "status": "skipped"
             },
             "line": 19,
             "name": "Fetch Order Number and store in Excel",
@@ -192,8 +191,8 @@
           },
           {
             "result": {
-              "duration": 760671500,
-              "status": "passed"
+              "duration": 7000,
+              "status": "skipped"
             },
             "line": 20,
             "name": "User Clicks MyItenary",
@@ -204,8 +203,8 @@
           },
           {
             "result": {
-              "duration": 83993700,
-              "status": "passed"
+              "duration": 12600,
+              "status": "skipped"
             },
             "line": 21,
             "name": "Validate the Booking confirmation Detials",

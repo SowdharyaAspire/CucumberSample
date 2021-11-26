@@ -49,6 +49,7 @@ public class AddctinStepDef {
 	public WebDriver user_Launch_the_browser() {
 		WebDriverManager.chromiumdriver().setup();
 		driver = new ChromeDriver();
+//		url = dataSet.get("1")
 		driver.get(url);
 		return driver;
 	}
@@ -57,6 +58,7 @@ public class AddctinStepDef {
 	public void user_Login_with_Valid_Details(String username, String password) {
 		adactinLogin = new AdactinLogin(driver);
 		adactinLogin.Login(username, password);
+		System.out.println(username);
 	}
 
 	@When("User Clicks the Login Button")
