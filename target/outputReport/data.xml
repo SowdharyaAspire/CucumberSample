@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="1" time="31.051326">
-<testcase classname="Room Booking" name="As a user, I want to book the room and Store its order number in Excel" time="31.051326">
+<testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="1" time="31.024444">
+<testcase classname="Room Booking" name="As a user, I want to book the room and Store its order number in Excel" time="31.024444">
 <system-out><![CDATA[Given User Launch the browser...............................................passed
 And User Login with Valid Details "sowndharya97sathy" and "Sownd@123".......passed
 When User Clicks the Login Button...........................................passed
