@@ -1,6 +1,9 @@
 package com.greens.TestPaperAssignment;
 
+import org.junit.AfterClass;
 import org.junit.runner.RunWith;
+
+import com.greens.util.Report;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
@@ -10,5 +13,8 @@ import cucumber.api.junit.Cucumber;
 		"com.greens.Stepdef" }, plugin = { "pretty",
 				"html:target/outputReport" }, dryRun = false, monochrome = true)
 public class AddactinTest {
-
+	@AfterClass
+	public static void afterClass() {
+		Report.genrateJVMReport(System.getProperty("user.dir")+"\\target\\outputReport\\data.json");
+	}
 }

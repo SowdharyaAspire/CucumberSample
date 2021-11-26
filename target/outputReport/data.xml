@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="1" time="31.024444">
+<testcase classname="Room Booking" name="As a user, I want to book the room and Store its order number in Excel" time="31.024444">
+<system-out><![CDATA[Given User Launch the browser...............................................passed
+And User Login with Valid Details "sowndharya97sathy" and "Sownd@123".......passed
+When User Clicks the Login Button...........................................passed
+Then Validate the HomePage..................................................passed
+And User Enters the details for Room........................................passed
+When User clicks Search button..............................................passed
+Then Validate the Search Hotel Page.........................................passed
+And User Selects the hotel..................................................passed
+When User clicks Continue Button............................................passed
+Then Validate Book Hotel Page...............................................passed
+And User enter the userDetails and Payment Details..........................passed
+When User clicks Book Now button............................................passed
+Then Validate Booking Confirmation..........................................passed
+And Fetch Order Number and store in Excel...................................passed
+When User Clicks MyItenary..................................................passed
+Then Validate the Booking confirmation Detials..............................passed
+]]></system-out>
+</testcase>
+</testsuite>
