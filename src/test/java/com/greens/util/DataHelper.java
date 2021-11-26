@@ -1,86 +1,116 @@
 package com.greens.util;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+/**
+ * @author sowndharyalakshmi
+ * @date 23 Nov 2021 Class to help fetch and upate the Datas in the Excel file
+ */
 public class DataHelper {
-	public static HashMap<String, String> storeValues = new HashMap<String, String>();
 
-	public static List<HashMap<String, String>> readExcelDatafromFile(String filePath, String sheetName) {
+	/**
+	 * @param filePath
+	 *            location of file in this project
+	 * @param sheetName
+	 *            Sheet name of the file
+	 * @return Excel Datas are updated as Map of Map format and returned in this
+	 *         method.
+	 */
+	public static Map<String, Map<String, String>> readExcelDatafromFile(String filePath, String sheetName) {
 		// create Java List to store Hashmaps
-		List<HashMap<String, String>> excelData = new ArrayList<>();
+		Map<String, Map<String, String>> completeSheetData = new HashMap<String, Map<String, String>>();
 
 		try {
 			FileInputStream fs = new FileInputStream(filePath);
 			XSSFWorkbook wb = new XSSFWorkbook(fs);
 			XSSFSheet sheet = wb.getSheet(sheetName);
 
-			// catch header row, so that you can use it as Key for your hashmap
+			// catch header row, so that you can use it as Key for your Map
 			Row HeaderRow = sheet.getRow(0);
 
-			for (int r = 1; r <= sheet.getPhysicalNumberOfRows() - 1; r++) {
-				Row CurrentRow = sheet.getRow(r);
-				// each row of data is stored in new hashmap
-				HashMap<String, String> currentRowMap = new HashMap<String, String>();
-				for (int c = 0; c < CurrentRow.getPhysicalNumberOfCells(); c++) {
-					Cell CurrentCell = CurrentRow.getCell(c);
-					String df = new DataFormatter().formatCellValue(CurrentCell);
-					System.out.print(HeaderRow.getCell(c).getStringCellValue());
-					System.out.println(df + "\t");
-					currentRowMap.put(HeaderRow.getCell(c).getStringCellValue(), df);
-					// i.e hashmap<key, value> = <row(0)column(c), row(1)column(c)>
-
-				}
-				excelData.add(currentRowMap);
+			// store Head row into List and Pass as key to map
+			List<String> columnHeader = new LinkedList<String>();
+			Iterator<Cell> cellIterator = HeaderRow.cellIterator();
+			while (cellIterator.hasNext()) {
+				columnHeader.add(cellIterator.next().getStringCellValue());
 			}
+
+			int rowCount = sheet.getLastRowNum();
+			int columnCount = HeaderRow.getLastCellNum();
+			for (int i = 1; i <= rowCount; i++) {
+				Map<String, String> singleRowData = new HashMap<String, String>();
+				Row row1 = sheet.getRow(i);
+				for (int j = 0; j < columnCount; j++) {
+					Cell cell2 = row1.getCell(j);
+					String df = new DataFormatter().formatCellValue(cell2);
+					singleRowData.put(columnHeader.get(j), df);
+				}
+				completeSheetData.put(String.valueOf(i), singleRowData);
+			}
+			System.out.println("Excel data as Map" + completeSheetData);
 			wb.close();
 			fs.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		return excelData;
+		return completeSheetData;
 
 	}
 
+	/**
+	 * @param filePath
+	 *            location of file in this project
+	 * @param sheetName
+	 *            Sheet name of the file
+	 * @param columnName
+	 *            Parameter which should be changed in the excel file
+	 * @param value
+	 *            the value to be updated in the given Excel file.
+	 */
+	@SuppressWarnings("resource")
 	public static void updateCellValue(String filePath, String sheetName, String columnName, String value) {
-		List<HashMap<String, String>> excelData = new ArrayList<>();
-
 		try {
-			FileInputStream fs = new FileInputStream(filePath);
-			XSSFWorkbook wb = new XSSFWorkbook(fs);
-			XSSFSheet sheet = wb.getSheet(sheetName);
-
-			// catch header row, so that you can use it as Key for your hashmap
-			Row HeaderRow = sheet.getRow(0);
-			Row ValueRow = sheet.getRow(1);
-			for (int c = 0; c < ValueRow.getPhysicalNumberOfCells(); c++) {
-				Cell CurrentCell = HeaderRow.getCell(c);
-				String df = new DataFormatter().formatCellValue(CurrentCell);
-				if (df.equals("Order number")) {
-					CurrentCell.setCellValue(value);
-					// i.e hashmap<key, value> = <row(0)column(c), row(1)column(c)>
+			File fileUpdate = new File(filePath);
+			Workbook workbookUpdate = new XSSFWorkbook(fileUpdate);
+			Sheet sheetUpdate = workbookUpdate.getSheet("data");
+			Row headRow = sheetUpdate.getRow(0);
+			int cellCount = headRow.getLastCellNum();
+			int updateCellIndex = 0;
+			for (int c = 1; c < cellCount; c++) {
+				String temp = headRow.getCell(c).getStringCellValue();
+				if (temp.equalsIgnoreCase(columnName)) {
+					updateCellIndex = c;
+					break;
 				} else {
+					continue;
 				}
 			}
-			fs.close();
+			Row valueRow = sheetUpdate.getRow(1);
+			valueRow.getCell(updateCellIndex).setCellValue(value);
 			FileOutputStream outputStream = new FileOutputStream("TestData.xlsx");
-            wb.write(outputStream);
-			wb.close();
-			outputStream.close();
-			
-		} catch (Exception e) {
+			workbookUpdate.write(outputStream);
+		} catch (InvalidFormatException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 }

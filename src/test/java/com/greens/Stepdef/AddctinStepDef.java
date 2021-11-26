@@ -2,9 +2,11 @@ package com.greens.Stepdef;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -41,7 +43,7 @@ public class AddctinStepDef {
 	String orderNumber;
 	String filepath = System.getProperty("user.dir") + "\\src\\test\\resources\\DataProvider\\TestData.xlsx";
 
-	List<HashMap<String, String>> dataSet = DataHelper.readExcelDatafromFile(filepath, "data");
+	Map<String, Map<String, String>> dataSet = DataHelper.readExcelDatafromFile(filepath, "data");
 
 	@Given("User Launch the browser")
 	public WebDriver user_Launch_the_browser() {
@@ -94,7 +96,7 @@ public class AddctinStepDef {
 
 	@Then("User Selects the hotel")
 	public void user_Selects_the_hotel() {
-
+		System.out.println("Select the Hotel");
 		adactinSelectHotel.selectHotel();
 	}
 
@@ -127,7 +129,7 @@ public class AddctinStepDef {
 	public void validate_Booking_Confirmation() throws InterruptedException {
 		driver.manage().timeouts().implicitlyWait(25, TimeUnit.SECONDS);
 		adactinBookConfirm = new AdactinBookConfirm(driver);
-		String text= adactinBookConfirm.getTitleBookingConfirm().getText();
+		String text = adactinBookConfirm.getTitleBookingConfirm().getText();
 		title = driver.getCurrentUrl();
 		System.out.println(text);
 		System.out.println(title);
@@ -138,9 +140,17 @@ public class AddctinStepDef {
 
 	@Then("Fetch Order Number and store in Excel")
 	public void fetch_Order_Number_and_store_in_Excel() {
+
+		WebElement txtOrderNumber = adactinBookConfirm.getTxtOrderNumber();
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].scrollIntoView(true)", txtOrderNumber);
 		orderNumber = adactinBookConfirm.getOrderNumber();
-		// DataHelper.readExcelDatafromFile(filepath, "data");
-		// DataHelper.updateCellValue(filepath, "data", "Order number", orderNumber);
+		System.out.println(orderNumber);
+		System.out.println("Before Update");
+		DataHelper.readExcelDatafromFile(filepath, "data");
+		DataHelper.updateCellValue(filepath, "data", "Order number", orderNumber);
+		System.out.println("After Update");
+		DataHelper.readExcelDatafromFile(filepath, "data");
 		System.out.println(orderNumber);
 
 	}
